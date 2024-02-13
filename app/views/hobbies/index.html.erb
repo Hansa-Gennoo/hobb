@@ -1,0 +1,12 @@
+<h1>Hobbies</h1>
+
+<%= link_to "Add a hobby", new_hobby_path, class: "btn btn-light" %>
+
+
+<div class="hobby-list">
+  <ul>
+    <% @hobbies.each do |hobby| %>
+      <li><%= hobbies.name %></li>
+    <% end %>
+  </ul>
+</div>
