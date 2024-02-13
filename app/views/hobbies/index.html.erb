@@ -1,12 +1,14 @@
-<h1>Hobbies</h1>
+<h1 class="title mt-3">Hobbies</h1>
 
-<%= link_to "Add a hobby", new_hobby_path, class: "btn btn-light" %>
+<%= link_to "Add a hobby", new_hobby_path, class: "btn btn-light mb-4" %>
 
 
 <div class="hobby-list">
   <ul>
     <% @hobbies.each do |hobby| %>
-      <li><%= hobbies.name %></li>
+      <li><%= hobby.name %></li>
+      <%# <%= link_to "Join", event_path, class: "btn btn-dark" %>
+      <%= link_to "Delete", hobbies_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
     <% end %>
   </ul>
 </div>
