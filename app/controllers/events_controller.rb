@@ -5,11 +5,10 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Evend.find(params[:id])
+    @event = Event.find(params[:id])
   end
 
   def new
-    @hobby = Hobby.find(params[:hobby_id])
     @event = Event.new(event_params)
   end
 

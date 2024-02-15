@@ -1,0 +1,9 @@
+<div class="event-form">
+<%= simple_form_for [@yacht, @booking] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <div class="btn btn-light">
+  <%= f.submit %>
+  </div>
+<% end %>
+</div>
