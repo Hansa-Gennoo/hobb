@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
   has_many :bookings
-  belongs_to :hobbies
+  belongs_to :hobby
 end
