@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   # root to: "hobbies#index"
   resources :hobbies do
-    resources :events
+    resources :events do
+      resources :bookings
+    end
   end
   # Defines the root path route ("/")
   # root "posts#index"
