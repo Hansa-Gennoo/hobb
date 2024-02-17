@@ -25,7 +25,7 @@ class HobbiesController < ApplicationController
 
   def destroy
     @hobby = Hobby.find(params[:id])
-    @hobby = Hobby.destroy
+    @hobby.destroy
     redirect_to hobbies_path, status: :see_other
   end
 

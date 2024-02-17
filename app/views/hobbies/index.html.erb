@@ -7,8 +7,8 @@
   <ul>
     <% @hobbies.each do |hobby| %>
       <li><%= hobby.name %></li>
-      <%# <%= link_to "Join", event_path, class: "btn btn-dark" %>
-      <%= link_to "Delete", hobbies_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
+      <%= link_to "Join", hobby_path(hobby), class: "btn btn-dark btn-sm mb-4" %>
+      <%= link_to "Delete", hobby_path(hobby), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
     <% end %>
   </ul>
 </div>

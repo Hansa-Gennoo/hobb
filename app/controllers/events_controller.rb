@@ -5,19 +5,19 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Evend.find(params[:id])
+    @event = Event.find(params[:id])
   end
 
   def new
     @hobby = Hobby.find(params[:hobby_id])
-    @event = Event.new(event_params)
+    @event = Event.new
   end
 
   def create
-    @event = Event.new
-    @event.user = current_user
+    @event = Event.new(event_params)
+    @event.hobby_id = params[:hobby_id]
     if @event.save
-      redirect_to event_path, notice: 'Event was successfully created!'
+      redirect_to hobby_event_path(@event.hobby_id, @event), notice: 'Event was successfully created!'
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,15 +29,16 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+    @event.hobby_id = params[:hobby_id]
     @event.update(event_params)
-    redirect_to events_path
+    redirect_to hobby_events_path
   end
 
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
 
-    redirect_to events_path, notice: 'Event was deleted.'
+    redirect_to hobby_events_path, notice: 'Event was deleted.'
   end
 
   private
