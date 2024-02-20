@@ -1,0 +1,9 @@
+<div class="review-form mt-4" style="width: 24rem">
+  <%= simple_form_for [@booking, @review] do |f| %>
+    <%= f.input :comment %>
+    <div class="btn btn-light btn-sm">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+
+</div>
