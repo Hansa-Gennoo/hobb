@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         resources :reviews
       end
     end
+    resources :chatrooms, only: :show
   end
   # Defines the root path route ("/")
   # root "posts#index"
