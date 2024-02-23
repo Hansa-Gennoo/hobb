@@ -11,11 +11,13 @@ class HobbiesController < ApplicationController
 
   def new
     @hobby = Hobby.new
+    authorize @hobby
   end
 
   def create
     @hobby = Hobby.new(hobby_params)
     @hobby.user = current_user
+    authorize @hobby
     if @hobby.save
       redirect_to hobbies_path
     else
@@ -24,6 +26,7 @@ class HobbiesController < ApplicationController
   end
 
   def destroy
+    authorize @hobby
     @hobby = Hobby.find(params[:id])
     @hobby.destroy
     redirect_to hobbies_path, status: :see_other
