@@ -15,10 +15,8 @@ class HobbiesController < ApplicationController
 
   def create
     @hobby = Hobby.new(hobby_params)
-    @chatroom = Chatroom.new(params[:hobby_id])
     @hobby.user = current_user
     if @hobby.save
-      @chatroom.save
       redirect_to hobbies_path
     else
       render :new, status: :unprocessable_entity

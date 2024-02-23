@@ -7,9 +7,12 @@
       <li><%= event.date %></li>
       <li><%= event.time %></li>
       <li><%= event.location %></li>
+
+      <div class="event-btn">
       <%= link_to "See event", hobby_event_path(event.hobby_id,event), class: "btn btn-dark btn-sm mb-4" %>
-      <%= link_to "Edit", edit_hobby_event_path(event.hobby_id, event), class: "btn btn-dark btn-sm mb-4" %>
+      <%# <%= link_to "Edit", edit_hobby_event_path(event.hobby_id, event), class: "btn btn-dark btn-sm mb-4" %>
       <%= link_to "Delete", hobby_event_path(event.hobby_id, event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
+      </div>
     <% end %>
   </ul>
 </div>

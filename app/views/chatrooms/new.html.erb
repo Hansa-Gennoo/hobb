@@ -1,0 +1,7 @@
+<div class="form-chat mt-4">
+  <%= simple_form_for [@hobby, @chatroom] do |f| %>
+    <%= f.input :name,
+    placeholder: @hobby.name %>
+    <%= f.button :submit, class: "btn btn-light btn-sm" %>
+   <% end %>
+</div>
