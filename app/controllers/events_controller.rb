@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
   def index
+    @hobby = Hobby.find(params[:hobby_id])
     @events = Event.all
   end
 
@@ -24,6 +25,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @hobby = Hobby.find(params[:hobby_id])
     @event = Event.find(params[:id])
   end
 
