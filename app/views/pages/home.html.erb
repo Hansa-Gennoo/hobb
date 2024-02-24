@@ -1,2 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNvbW11bml0eSUyMGV2ZW50fGVufDB8fDB8fHww);">
+  <div class="container">
+    <h1 class="mb-4">Find your tribe. Connect over shared passions!</h1>
+    <p class="mt-4">Explore a world of hobbies, share your skills, and discover new ones with our vibrant community.</p>
+    <div class="join-btn">
+      <%= link_to "Join now", hobbies_path, class: "btn btn-outline-info" %>
+    </div>
+  </div>
+</div>
