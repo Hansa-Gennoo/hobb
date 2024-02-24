@@ -1,3 +1,7 @@
+<div class="back-btn">
+  <%= link_to "Back to Hobbies", hobbies_path(@hobbies), class: "btn btn-dark btn-sm mb-4" %>
+</div>
+
 <div class="form-hobby mt-4" style="width: 18rem;">
   <%= simple_form_for @hobby do |f| %>
   <%= f.input :name %>
