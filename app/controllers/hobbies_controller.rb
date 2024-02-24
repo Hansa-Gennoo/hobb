@@ -11,6 +11,7 @@ class HobbiesController < ApplicationController
 
   def new
     @hobby = Hobby.new
+    @hobby.build_chatroom
   end
 
   def create
@@ -32,6 +33,6 @@ class HobbiesController < ApplicationController
   private
 
   def hobby_params
-    params.require(:hobby).permit(:name)
+    params.require(:hobby).permit(:name, chatroom_attributes: [:name])
   end
 end

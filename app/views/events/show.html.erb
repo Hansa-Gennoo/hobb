@@ -8,7 +8,6 @@
 
 <%# btn options for the user to choose action %>
 <div class="event-btn">
-  <%= link_to "Join", new_hobby_event_booking_path(@hobby, @event), class: "btn btn-dark btn-sm mb-4" %>
-  <%= link_to "Edit", edit_hobby_event_path(@event), class: "btn btn-dark btn-sm mb-4" %>
+  <%= link_to "Edit", edit_hobby_event_path(@event.hobby_id, @event), class: "btn btn-dark btn-sm mb-4" %>
   <%= link_to "Delete", hobby_event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
 </div>

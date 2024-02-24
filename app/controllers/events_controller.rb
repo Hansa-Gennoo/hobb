@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-
   def index
     @events = Event.all
   end
@@ -24,12 +23,13 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @hobby = Hobby.find(params[:hobby_id])
     @event = Event.find(params[:id])
   end
 
   def update
+    @hobby = Hobby.find(params[:hobby_id])
     @event = Event.find(params[:id])
-    @event.hobby_id = params[:hobby_id]
     @event.update(event_params)
     redirect_to hobby_events_path
   end
