@@ -1,4 +1,6 @@
 class ChatroomsController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @hobby = Hobby.find(params[:hobby_id])
     @chatroom = Chatroom.find(params[:id])

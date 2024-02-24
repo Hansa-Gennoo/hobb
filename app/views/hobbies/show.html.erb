@@ -7,5 +7,5 @@
 
 
 <div class="chat-btn">
-  <%= link_to "Say Hi!", new_hobby_chatroom_path(@hobby), class: "btn btn-dark btn-sm mb-4" %>
+  <%= link_to "Join Chatroom", hobby_chatroom_path(@hobby, @hobby.chatroom), class: "btn btn-dark btn-sm mb-4" %>
 </div>

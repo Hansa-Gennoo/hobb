@@ -1,6 +1,8 @@
 <h1 class="title mt-3">Hobbies</h1>
 
-<%= link_to "Add a hobby", new_hobby_path, class: "btn btn-light mb-4" %>
+<% if current_user.admin? %>
+  <%= link_to "Add a hobby", new_hobby_path, class: "btn btn-light mb-4" %>
+<% end %>
 
 
 <div class="hobby-list">
@@ -12,5 +14,3 @@
     <% end %>
   </ul>
 </div>
-
-
