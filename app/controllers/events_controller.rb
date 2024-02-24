@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    @events = Event.where(hobby_id: params[:hobby_id])
   end
 
   def show
