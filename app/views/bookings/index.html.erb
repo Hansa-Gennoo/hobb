@@ -1,7 +1,10 @@
+<h1>My Bookings</h1>
+
 <div class="booking-list">
   <div>
     <% @bookings.each do |booking| %>
-      <li><%= booking.event %></li>
+      <p><%= booking.event.name %> - <%= booking.event.time %></p>
+      <p><%= link_to "See Details", hobby_event_path(booking.event.hobby, booking.event) %></p>
     <% end %>
   </div>
 </div>

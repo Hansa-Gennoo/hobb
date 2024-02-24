@@ -9,12 +9,15 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @event = Event.find(params[:event_id])
-    @booking.event = @event
-    @booking.user = current_user
-    @booking.save!
-    redirect_to bookings_path, notice: 'Booking was successfully created.'
+    @hobby = Hobby.find(params[:hobby_id])
+    @event = @hobby.events.find(params[:event_id])
+    @booking = current_user.bookings.build(event: @event)
+
+    if @booking.save!
+      redirect_to hobby_event_bookings_path, notice: 'Booking was successfully created.'
+    else
+      redirect_back fallback_location: root_path, alert: 'Failed to create booking.'
+    end
   end
 
   def destroy

@@ -1,6 +1,10 @@
+<div class="back-btn">
+  <%= link_to "Back to hobby", hobby_path(params[:hobby_id]), class: "btn btn-dark btn-sm mb-4" %>
+</div>
+
 <div class="container chatroom" data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h1>#<%= @hobby.chatroom.name %></h1>
+  <h1>#<%= @chatroom.name %></h1>
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
