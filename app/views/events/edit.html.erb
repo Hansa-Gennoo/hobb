@@ -1,0 +1,12 @@
+<div class="event-form mt-4" style="width: 24rem">
+  <%= simple_form_for [@hobby, @event] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :location %>
+    <%= f.input :date %>
+    <%= f.input :time %>
+    <div class="btn btn-light btn-sm">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+
+</div>
