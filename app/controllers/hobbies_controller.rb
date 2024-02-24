@@ -1,5 +1,5 @@
 class HobbiesController < ApplicationController
-  # before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:new, :create, :destroy]
 
   def index
     @hobbies = Hobby.all
