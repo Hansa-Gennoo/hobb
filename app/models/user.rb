@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :messages
+  has_many :bookings, dependent: :destroy
 
   def admin?
-    self.admin    
+    self.admin
   end
 end

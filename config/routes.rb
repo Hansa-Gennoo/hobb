@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       resources :messages, only: :create
     end
   end
+
+  resources :bookings, only: :index
   # Defines the root path route ("/")
   # root "posts#index"
 end
