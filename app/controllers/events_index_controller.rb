@@ -1,0 +1,2 @@
+class EventsIndexController < ApplicationController
+end
