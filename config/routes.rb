@@ -9,9 +9,8 @@ Rails.application.routes.draw do
 
   resources :hobbies do
     resources :events do
-      resources :bookings do
-        resources :reviews
-      end
+      resources :reviews, only: [:new, :index, :destroy]
+      resources :bookings
     end
     resources :chatrooms, only: [:new, :create, :show] do
       resources :messages, only: :create

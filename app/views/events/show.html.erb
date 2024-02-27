@@ -18,6 +18,13 @@
 
 <div class="join-btn">
   <% if user_signed_in? %>
-    <%= button_to "Add to Booking", hobby_event_bookings_path(@event.hobby, @event), method: :post %>
+    <% if current_user.bookings.exists?(event_id: @event.id) %>
+      <p>This event is already booked by you.</p>
+      <%= link_to "View My Bookings", bookings_path, class: "btn btn-primary btn-sm" %>
+    <% else %>
+      <%= button_to "Add to Booking", hobby_event_bookings_path(@event.hobby, @event), method: :post %>
+    <% end %>
   <% end %>
 </div>
+
+<%= link_to "Add a Review", new_hobby_event_review_path(@hobby.event.review) %>
