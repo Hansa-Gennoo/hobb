@@ -27,4 +27,29 @@
   <% end %>
 </div>
 
-<%= link_to "Add a Review", new_hobby_event_review_path(@hobby.event.review) %>
+<%# <%= link_to "Add a Review", new_hobby_event_review_path(@hobby.event.review) %>
+
+<%# Display existing reviews %>
+<h3>list of reviews </h3>
+<% @reviews.each do |review| %>
+  <div class="review">
+    <p><%= review.comment %></p>
+    <% if user_signed_in? && review.user == current_user %>
+      <%= button_to "Delete", hobby_event_review_path(review.event.hobby, review.event, review), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+    <% end %>
+  </div>
+<% end %>
+
+<h3>add a review</h3>
+<%# Form to add a new review %>
+<% if user_signed_in? %>
+  <%= form_with(model: [ @event, @review ], url: hobby_event_reviews_path(@event.hobby, @event), method: :post) do |form| %>
+    <div class="field">
+      <%= form.label :comment %>
+      <%= form.text_area :comment, class: 'form-control' %>
+    </div>
+    <%= form.submit "Add Review", class: "btn btn-primary" %>
+  <% end %>
+<% else %>
+  <p>Please sign in to add a review.</p>
+<% end %>

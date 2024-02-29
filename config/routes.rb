@@ -9,15 +9,15 @@ Rails.application.routes.draw do
 
   resources :hobbies do
     resources :events do
-      resources :reviews, only: [:new, :index, :destroy]
-      resources :bookings
+      resources :bookings, only: [:index, :create, :destroy]
+      resources :reviews, only: [:create, :destroy]
     end
     resources :chatrooms, only: [:new, :create, :show] do
       resources :messages, only: :create
     end
   end
 
-  resources :bookings, only: :index
+  resources :bookings, only: [:index, :destroy]
   # Defines the root path route ("/")
   # root "posts#index"
 end
