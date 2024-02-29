@@ -1,10 +1,18 @@
+<%# <div class="back-btn"> %>
+  <%# <%= link_to "Back to Events", hobby_event_bookings_path(@event, @bookings), class: "btn btn-dark btn-sm mb-4" %>
+<%# </div> %>
+
 <h1>My Bookings</h1>
 
 <div class="booking-list">
   <div>
     <% @bookings.each do |booking| %>
-      <p><%= booking.event.name %> - <%= booking.event.time %></p>
-      <p><%= link_to "See Details", hobby_event_path(booking.event.hobby, booking.event) %></p>
+      <div>
+        <p><strong>Hobby:</strong> <%= booking.event.hobby.name %></p>
+        <p><strong>Event:</strong> <%= booking.event.name %> - <%= booking.event.time %></p>
+        <p><%= link_to "See Details", hobby_event_path(booking.event.hobby, booking.event) %></p>
+        <%= button_to "Delete", hobby_event_booking_path(booking.event.hobby, booking.event, booking), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+      </div>
     <% end %>
   </div>
 </div>

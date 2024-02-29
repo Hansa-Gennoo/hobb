@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_22_093609) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_28_173458) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,10 +63,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_093609) do
 
   create_table "reviews", force: :cascade do |t|
     t.text "comment"
-    t.bigint "booking_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.index ["event_id"], name: "index_reviews_on_event_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,5 +93,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_093609) do
   add_foreign_key "hobbies", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
-  add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "events"
+  add_foreign_key "reviews", "users"
 end

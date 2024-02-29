@@ -5,6 +5,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @reviews = @event.reviews
+    @review = Review.new
   end
 
   def new
