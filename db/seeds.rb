@@ -9,12 +9,12 @@
 #   end
 require 'faker'
 puts "Starting seeding..."
-# puts "Clearing existing data..."
-# Booking.destroy_all
-# Event.destroy_all
-# Hobby.destroy_all
-# Review.destroy_all
-# User.destroy_all
+puts "Clearing existing data..."
+Booking.destroy_all
+Event.destroy_all
+Hobby.destroy_all
+Review.destroy_all
+User.destroy_all
 # # Seed data for users
 # 5.times do
 #   User.create!(
@@ -58,11 +58,11 @@ puts "Starting seeding..."
 # end
 # puts "reviews done..."
 
-admin = User.create!(
+User.create!(
   email: 'admin@example.com',
   password: 'password', # Set your desired password here
   password_confirmation: 'password', # Also required for bcrypt
-  first_name: 'Admin',
+  first_name: 'AD',
   last_name: 'User',
   admin: true
 )
