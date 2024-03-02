@@ -20,5 +20,20 @@
 }
 
 .join-btn {
+  border: 1px;
   border-radius: 8px;
 }
+
+.container-home-banner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .home-banner-title,
+  .home-banner-des {
+    width: 40%;
+  }
+}
+
