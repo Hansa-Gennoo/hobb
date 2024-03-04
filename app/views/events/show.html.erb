@@ -1,55 +1,69 @@
 <%# details of a single event %>
-<div class="back-btn">
+<div class="container back-btn">
   <%= link_to "Back to Events", hobby_events_path(@event.hobby), class: "btn btn-dark btn-sm mb-4" %>
 </div>
 
-<div class="event">
-  <h1><%= @event.name %></h1>
-  <p><%= @event.location %></p>
-  <p><%= @event.date %></p>
-  <p><%= @event.time %></p>
-</div>
+<div class="container flex-container" style="display: flex; flex-direction: row;">
+  <div class="container event" style="width: 40%; background-color: white;">
+    <h1 class="event-title"><%= @event.name %></h1>
+    <p><%= @event.location %></p>
+    <p><%= @event.date %></p>
+    <p><%= @event.time %></p>
 
-<%# btn options for the user to choose action %>
-<div class="event-btn">
-  <%= link_to "Edit", edit_hobby_event_path(@event.hobby_id, @event), class: "btn btn-dark btn-sm mb-4" %>
-  <%= link_to "Delete", hobby_event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
-</div>
-
-<div class="join-btn">
-  <% if user_signed_in? %>
-    <% if current_user.bookings.exists?(event_id: @event.id) %>
-      <p>This event is already booked by you.</p>
-      <%= link_to "View My Bookings", bookings_path, class: "btn btn-primary btn-sm" %>
-    <% else %>
-      <%= button_to "Add to Booking", hobby_event_bookings_path(@event.hobby, @event), method: :post %>
-    <% end %>
-  <% end %>
-</div>
-
-<%# <%= link_to "Add a Review", new_hobby_event_review_path(@hobby.event.review) %>
-
-<%# Display existing reviews %>
-<h3>list of reviews </h3>
-<% @reviews.each do |review| %>
-  <div class="review">
-    <p><%= review.comment %></p>
-    <% if user_signed_in? && review.user == current_user %>
-      <%= button_to "Delete", hobby_event_review_path(review.event.hobby, review.event, review), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
-    <% end %>
-  </div>
-<% end %>
-
-<h3>add a review</h3>
-<%# Form to add a new review %>
-<% if user_signed_in? %>
-  <%= form_with(model: [ @event, @review ], url: hobby_event_reviews_path(@event.hobby, @event), method: :post) do |form| %>
-    <div class="field">
-      <%= form.label :comment %>
-      <%= form.text_area :comment, class: 'form-control' %>
+    <div class="event-btn">
+      <%= link_to "Edit", edit_hobby_event_path(@event.hobby_id, @event), class: "btn btn-dark btn-sm mb-4" %>
+      <%= link_to "Delete", hobby_event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
     </div>
-    <%= form.submit "Add Review", class: "btn btn-primary" %>
-  <% end %>
-<% else %>
-  <p>Please sign in to add a review.</p>
-<% end %>
+
+    <div class="join-btn">
+      <% if user_signed_in? %>
+        <% if current_user.bookings.exists?(event_id: @event.id) %>
+          <p>This event is already booked by you.</p>
+          <%= link_to "View My Bookings", bookings_path, class: "btn btn-primary btn-sm" %>
+        <% else %>
+          <%= button_to "Add to Booking", hobby_event_bookings_path(@event.hobby, @event), method: :post %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <%# btn options for the user to choose action %>
+
+
+  <div class="review-container" style="width: 50%;">
+    <%# <%= link_to "Add a Review", new_hobby_event_review_path(@hobby.event.review) %>
+    <div class="review-box">
+      <h3>Reviews</h3>
+      <%# Form to add a new review %>
+      <% if user_signed_in? %>
+        <%= form_with(model: [ @event, @review ], url: hobby_event_reviews_path(@event.hobby, @event), method: :post) do |form| %>
+          <div class="field">
+            <%= form.text_area :comment, placeholder: "Add a review", class: 'form-control' %>
+          </div>
+          <div class="submit-btn mt-2" style="align-items: right;">
+            <%= form.submit "Add Review", class: "btn btn-outline-dark rounded-pill" %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Please sign in to add a review.</p>
+      <% end %>
+
+    </div>
+
+    <%# Display existing reviews %>
+    <div class="review-list mt-4">
+
+      <% @reviews.each do |review| %>
+        <div class="review mt-4">
+          <p><%= review.comment %></p>
+          <% if user_signed_in? && review.user == current_user %>
+            <%= button_to "Delete", hobby_event_review_path(review.event.hobby, review.event, review), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+
+  </div>
+
+</div>
