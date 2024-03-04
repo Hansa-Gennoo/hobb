@@ -1,16 +1,23 @@
-<h1 class="title mt-3">Hobbies</h1>
+<div class="container">
+  <h1 class="title mt-3">Hobbies</h1>
 
-<% if current_user.admin? %>
-  <%= link_to "Add a hobby", new_hobby_path, class: "btn btn-light mb-4" %>
-<% end %>
+  <% if current_user.admin? %>
+    <%= link_to "Add A hobby", new_hobby_path, class: "btn btn-light mb-4" %>
+  <% end %>
 
-
-<div class="hobby-list">
-  <ul>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
     <% @hobbies.each do |hobby| %>
-      <li><%= hobby.name %></li>
-      <%= link_to "Join", hobby_path(hobby), class: "btn btn-dark btn-sm mb-4" %>
-      <%= link_to "Delete", hobby_path(hobby), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
+      <div class="col mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= hobby.name %></h5>
+            <div class="card-actions">
+              <%= link_to "Join", hobby_path(hobby), class: "btn btn-dark btn-sm mb-2" %>
+              <%= link_to "Delete", hobby_path(hobby), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-2" %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </div>
