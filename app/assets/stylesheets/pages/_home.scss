@@ -64,7 +64,7 @@
   flex: none;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: space-between;
   overflow: visible;
   padding: 0%;
   position: relative;
@@ -74,7 +74,15 @@
 }
 
 .head-title {
-  font-size: medium;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 900;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cards-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  position: relative;
+  object-fit: cover;
 }
