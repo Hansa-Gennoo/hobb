@@ -73,8 +73,9 @@
 
 }
 
-.head-title {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.head-title h5 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 32px;
 }
 
 .cards-container {
@@ -85,4 +86,13 @@
   justify-content: space-between;
   position: relative;
   object-fit: cover;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
