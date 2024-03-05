@@ -1,30 +1,39 @@
 <%# details of a single event %>
 <div class="container back-btn">
-  <%= link_to "Back to Events", hobby_events_path(@event.hobby), class: "btn btn-dark btn-sm mb-4" %>
+  <%= link_to "Back to Events", hobby_events_path(@event.hobby), class: "btn btn-dark btn-sm rounded-pill mb-4" %>
 </div>
 
-<div class="container flex-container" style="display: flex; flex-direction: row;">
-  <div class="container event" style="width: 40%; background-color: white;">
-    <h1 class="event-title"><%= @event.name %></h1>
-    <p><%= @event.location %></p>
-    <p><%= @event.date %></p>
-    <p><%= @event.time %></p>
+<div class="container flex-container" style="display: flex; flex-direction: row; justify-content: space-between;">
+  <div class="event" style="width: 45%;">
 
-    <div class="event-btn">
-      <%= link_to "Edit", edit_hobby_event_path(@event.hobby_id, @event), class: "btn btn-dark btn-sm mb-4" %>
-      <%= link_to "Delete", hobby_event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
-    </div>
 
-    <div class="join-btn">
-      <% if user_signed_in? %>
-        <% if current_user.bookings.exists?(event_id: @event.id) %>
-          <p>This event is already booked by you.</p>
-          <%= link_to "View My Bookings", bookings_path, class: "btn btn-primary btn-sm" %>
-        <% else %>
-          <%= button_to "Add to Booking", hobby_event_bookings_path(@event.hobby, @event), method: :post %>
+    <div class="banner" style="height: 70%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1579547621706-1a9c79d5c9f1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzl8fHB1cnBsZSUyMGFuZCUyMGJsdWUlMjBncmFkaWVudHxlbnwwfHwwfHx8MA%3D%3D);">
+      <div class="container">
+        <h1 class="event-title"><%= @event.name %></h1>
+        <p><%= @event.location %></p>
+        <p><%= @event.date %></p>
+        <p><%= @event.time %></p>
+      </div>
+
+      <div class="container event-btn">
+        <%= link_to "Edit", edit_hobby_event_path(@event.hobby_id, @event), class: "btn btn-dark btn-sm mb-4" %>
+        <%= link_to "Delete", hobby_event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline-danger btn-sm mb-4" %>
+      </div>
+
+      <div class="container join-btn">
+        <% if user_signed_in? %>
+          <% if current_user.bookings.exists?(event_id: @event.id) %>
+            <p>This event is already booked by you.</p>
+            <%= link_to "View My Bookings", bookings_path, class: "btn btn-primary btn-sm" %>
+          <% else %>
+            <%= button_to "Add to Booking", hobby_event_bookings_path(@event.hobby, @event), method: :post %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
+
     </div>
+
+
   </div>
 
   <%# btn options for the user to choose action %>
@@ -41,7 +50,7 @@
             <%= form.text_area :comment, placeholder: "Add a review", class: 'form-control' %>
           </div>
           <div class="submit-btn mt-2" style="align-items: right;">
-            <%= form.submit "Add Review", class: "btn btn-outline-dark rounded-pill" %>
+            <%= form.submit "Add Review", class: "btn btn-outline-dark btn-sm rounded-pill" %>
           </div>
         <% end %>
       <% else %>
@@ -56,9 +65,13 @@
       <% @reviews.each do |review| %>
         <div class="review mt-4">
           <p><%= review.comment %></p>
-          <% if user_signed_in? && review.user == current_user %>
-            <%= button_to "Delete", hobby_event_review_path(review.event.hobby, review.event, review), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
-          <% end %>
+
+          <div class="btn-pos" style="display: flex; flex-direction: row; align-items: flex-end; justify-content: flex-end;">
+            <% if user_signed_in? && review.user == current_user %>
+              <%= button_to "Delete", hobby_event_review_path(review.event.hobby, review.event, review), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn btn-outline-danger rounded-pill btn-sm" %>
+            <% end %>
+          </div>
+
         </div>
       <% end %>
     </div>
