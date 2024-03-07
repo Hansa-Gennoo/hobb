@@ -7,29 +7,33 @@
   <div class="event" style="width: 45%;">
 
 
-    <div class="card" style="height: 60%;">
+    <div class="card" style="height: 55%; background-image: url(https://images.unsplash.com/photo-1646038572806-3d5f4252c567?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fHB1cnBsZSUyMGFuZCUyMG9yYW5nZSUyMGdyYWRpZW50fGVufDB8fDB8fHww);">
       <div class="container">
-        <h1 class="event-title"><%= @event.name %></h1>
-        <p><%= @event.location %></p>
-        <p><%= @event.date %></p>
-        <p><%= @event.time %></p>
-      </div>
+        <div class="container card-detail mt-4">
+          <h1 class="event-title"><%= @event.name %></h1>
+          <p class="event-title"><%= @event.location %></p>
+          <p class="event-title"><%= @event.date %></p>
+          <p class="event-title"><%= @event.time %></p>
+        </div>
 
-      <div class="container event-btn">
-        <%= link_to "Edit", edit_hobby_event_path(@event.hobby_id, @event), class: "btn btn-dark btn-sm rounded-pill mb-4" %>
-        <%= link_to "Delete", hobby_event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline-danger rounded-pill btn-sm mb-4" %>
-      </div>
+        <div class="container event-btn mb-4">
+          <%= link_to "Edit", edit_hobby_event_path(@event.hobby_id, @event), class: "btn btn-dark btn-sm rounded-pill mb-4" %>
+          <%= link_to "Delete", hobby_event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline-danger rounded-pill btn-sm mb-4" %>
+        </div>
 
-      <div class="container join-btn">
-        <% if user_signed_in? %>
-          <% if current_user.bookings.exists?(event_id: @event.id) %>
-            <p>This event is already booked by you.</p>
-            <%= link_to "View My Bookings", bookings_path, class: "btn btn-primary btn-sm" %>
-          <% else %>
-            <%= button_to "Add to Booking", hobby_event_bookings_path(@event.hobby, @event), method: :post %>
+        <div class="container join-btn mt-4">
+          <% if user_signed_in? %>
+            <% if current_user.bookings.exists?(event_id: @event.id) %>
+              <p>This event is already booked by you.</p>
+              <%= link_to "View My Events", bookings_path, class: "btn btn-primary btn-sm" %>
+            <% else %>
+              <%= button_to "Add to My Events", hobby_event_bookings_path(@event.hobby, @event), method: :post %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+
       </div>
+
 
     </div>
 
@@ -80,3 +84,5 @@
   </div>
 
 </div>
+
+<%# linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),  %>

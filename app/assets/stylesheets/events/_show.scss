@@ -1,7 +1,18 @@
-h1 {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.card-detail .event-title {
+  h1 {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+
+  p {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
 }
 
-p {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+.card {
+  border-radius: 30px;
 }
