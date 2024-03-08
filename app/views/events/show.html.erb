@@ -26,9 +26,9 @@
           <% if user_signed_in? %>
             <% if current_user.bookings.exists?(event_id: @event.id) %>
               <p>This event is already booked by you.</p>
-              <%= link_to "View My Events", bookings_path, class: "btn btn-primary btn-sm" %>
+              <%= link_to "View My Events", bookings_path, class: "btn btn-outline-dark rounded-pill btn-sm" %>
             <% else %>
-              <%= button_to "Add to My Events", hobby_event_bookings_path(@event.hobby, @event), method: :post %>
+              <%= button_to "Add to My Events", hobby_event_bookings_path(@event.hobby, @event), class: "btn btn-dark rounded-pill btn-sm", method: :post %>
             <% end %>
           <% end %>
         </div>
