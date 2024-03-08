@@ -1,6 +1,7 @@
 <%# details of a single event %>
-<div class="container back-btn mt-4">
-  <%= link_to "Back to Events", hobby_events_path(@event.hobby), class: "btn btn-dark btn-sm rounded-pill mb-4" %>
+<div class="back-btn">
+  <%= link_to "Back to hobby", hobby_path(params[:hobby_id]), class: "btn btn-dark btn-sm mb-4" %>
+  <%# <%= link_to "Back to Events", hobby_events_path(@event.hobby), class: "btn btn-dark btn-sm mb-4" %>
 </div>
 
 <div class="container flex-container" style="display: flex; flex-direction: row; justify-content: space-between;">
