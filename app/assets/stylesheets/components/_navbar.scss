@@ -1,6 +1,11 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: linear-gradient(317deg, #fd9300, #f2eaf5);
+    background-size: 400% 400%;
+    -webkit-animation: AnimationName 8s ease infinite;
+    -moz-animation: AnimationName 8s ease infinite;
+    -o-animation: AnimationName 8s ease infinite;
+    animation: AnimationName 8s ease infinite;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +13,10 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 50px;
+}
+
+.nav-item {
+  font-family: 'Courier New', Courier, monospace;
+  color: black;
 }

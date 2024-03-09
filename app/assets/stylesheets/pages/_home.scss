@@ -1,8 +1,21 @@
 // Specific CSS for your home-page
 .banner {
+  width: 100%;
   background-size: cover;
   background-position: center;
   padding: 150px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 18px;
+}
+
+.header-title, .home-banner-title {
+  line-height: 100%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 250%;
+  margin-right: 10px;
 }
 
 .banner h1 {
@@ -20,5 +33,111 @@
 }
 
 .join-btn {
+  border: 1px;
   border-radius: 8px;
+}
+
+.container-home-banner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .home-banner-des {
+    width: 40%;
+  }
+}
+
+
+.head-slogan {
+  width: 65%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: .2rem;
+  margin-block: 3rem;
+  text-align: center;
+}
+
+.flex-container {
+  align-items: center;
+  display: flex;
+  flex: none;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow: visible;
+  padding: 0%;
+  position: relative;
+  width: 100%
+
+
+}
+
+.head-title h5 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
+}
+
+.cards-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  position: relative;
+  object-fit: cover;
+  height: 60%;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-title h5 {
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+.card-home {
+  height: 60%;
+  width: 32%;
+  justify-content: space-between;
+}
+
+.card {
+  margin-right: 10px;
+}
+
+.footer {
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: black;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: #D23333;
 }
