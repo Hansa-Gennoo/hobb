@@ -2,7 +2,8 @@
   <%= link_to "Back to hobby", hobby_path(params[:hobby_id]), class: "btn btn-outline-dark rounded-pill btn-sm mb-4" %>
 </div>
 
-<div class="container chatroom mt-2 mb-4" data-controller="chatroom-subscription"
+
+<div class="container chatroom" data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
   <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">#<%= @chatroom.name %></h1>
 
