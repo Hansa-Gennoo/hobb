@@ -7,7 +7,7 @@ class HobbiesController < ApplicationController
 
   def show
     @hobby = Hobby.find(params[:id])
-    @events = Event.all
+    @events = Event.where(hobby_id: params[:id])
   end
 
   def new
