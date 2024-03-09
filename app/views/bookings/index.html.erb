@@ -5,37 +5,32 @@
   <h1>My Bookings</h1>
 </div>
 
-<div class="booking-list mt-4">
-  <div class="container d-flex" style="width: 100%;">
+<div class="booking-list mt-4 d-flex justify-content-center gap-4">
+  <div class="my-events" style="width: 65%;">
     <% @bookings.each do |booking| %>
-      <div>
-        <div class="card border-dark rounded-4 mb-3" style="max-width: 18rem;">
-          <div class="card-header bg-transparent">
-            <p><strong>Hobby:</strong> <%= booking.event.hobby.name %></p>
+      <div class="card-items card border-dark rounded-4 mb-3">
+        <div class="card-header bg-transparent">
+          <p><strong>Hobby:</strong> <%= booking.event.hobby.name %></p>
 
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">
-              <strong>Event:</strong> <%= booking.event.name %> - <%= booking.event.time %>
-            </h5>
-          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <strong>Event:</strong> <%= booking.event.name %> - <%= booking.event.time %>
+          </h5>
+        </div>
 
-          <div class="card-footer bg-transparent">
-            <div class="buttons d-flex">
-              <div class="details-btn">
-                <p><%= link_to "See Details", hobby_event_path(booking.event.hobby, booking.event), class: "btn btn-outline-dark rounded-pill btn-sm" %></p>
-              </div>
-              <div class="delete-btn">
-                <%= button_to "Delete", hobby_event_booking_path(booking.event.hobby, booking.event, booking), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-dark rounded-pill btn-sm" %>
-              </div>
+        <div class="card-footer bg-transparent">
+          <div class="buttons d-flex gap-4">
+            <div class="details-btn">
+              <p><%= link_to "See Details", hobby_event_path(booking.event.hobby, booking.event), class: "btn btn-outline-dark rounded-pill btn-sm" %></p>
+            </div>
+            <div class="delete-btn">
+              <%= button_to "Delete", hobby_event_booking_path(booking.event.hobby, booking.event, booking), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-dark rounded-pill btn-sm" %>
             </div>
           </div>
-
-          </div>
-
         </div>
       </div>
     <% end %>
+    </div>
   </div>
 </div>
-

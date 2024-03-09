@@ -1,25 +1,28 @@
-<div class="back-btn">
-  <%= link_to "Back to hobby", hobby_path(params[:hobby_id]), class: "btn btn-dark btn-sm mb-4" %>
-</div>
-
-<div class="container chatroom" data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h1>#<%= @chatroom.name %></h1>
-
-  <div class="messages" data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
-    <% end %>
+<div class="background" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?q=80&w=1429&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+  <div class="back-btn">
+    <%= link_to "Back to hobby", hobby_path(params[:hobby_id]), class: "btn btn-dark btn-sm mb-4" %>
   </div>
 
-  <div class="container-messages">
-    <%= simple_form_for [@hobby, @chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
-      <%= f.input :content,
-        label: false,
-        placeholder: "Message ##{@hobby.chatroom.name}",
-        wrapper_html: {class: "flex-grow-1"}
-      %>
-      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-    <% end %>
+  <div class="container chatroom" data-controller="chatroom-subscription"
+    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+    <h1>#<%= @chatroom.name %></h1>
+
+    <div class="messages" data-chatroom-subscription-target="messages">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
+
+    <div class="container-messages">
+      <%= simple_form_for [@hobby, @chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
+        <%= f.input :content,
+          label: false,
+          placeholder: "Message ##{@hobby.chatroom.name}",
+          wrapper_html: {class: "flex-grow-1"}
+        %>
+        <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+      <% end %>
+    </div>
   </div>
+
 </div>
