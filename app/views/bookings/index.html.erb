@@ -1,18 +1,43 @@
 <%# <div class="back-btn"> %>
   <%# <%= link_to "Back to Events", hobby_event_bookings_path(@event, @bookings), class: "btn btn-dark btn-sm mb-4" %>
 <%# </div> %>
+<div class="container">
+  <h1>My Bookings</h1>
+</div>
+
+
+<div class="booking-list mt-4 d-flex justify-content-center gap-4">
+  <div class="my-events" style="width: 65%;">
 
 <h1>Upcoming Events</h1>
 
 <div class="booking-list">
   <div>
+
     <% @bookings.each do |booking| %>
-      <div>
-        <p><strong>Hobby:</strong> <%= booking.event.hobby.name %></p>
-        <p><strong>Event:</strong> <%= booking.event.name %> - <%= booking.event.time %></p>
-        <p><%= link_to "See Details", hobby_event_path(booking.event.hobby, booking.event) %></p>
-        <%= button_to "Delete", hobby_event_booking_path(booking.event.hobby, booking.event, booking), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+      <div class="card-items card border-dark rounded-4 mb-3">
+        <div class="card-header bg-transparent">
+          <p><strong>Hobby:</strong> <%= booking.event.hobby.name %></p>
+
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <strong>Event:</strong> <%= booking.event.name %> - <%= booking.event.time %>
+          </h5>
+        </div>
+
+        <div class="card-footer bg-transparent">
+          <div class="buttons d-flex gap-4">
+            <div class="details-btn">
+              <p><%= link_to "See Details", hobby_event_path(booking.event.hobby, booking.event), class: "btn btn-outline-dark rounded-pill btn-sm" %></p>
+            </div>
+            <div class="delete-btn">
+              <%= button_to "Delete", hobby_event_booking_path(booking.event.hobby, booking.event, booking), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-dark rounded-pill btn-sm" %>
+            </div>
+          </div>
+        </div>
       </div>
     <% end %>
+    </div>
   </div>
 </div>
