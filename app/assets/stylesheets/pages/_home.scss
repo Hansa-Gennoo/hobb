@@ -86,6 +86,7 @@
   justify-content: space-between;
   position: relative;
   object-fit: cover;
+  height: 60%;
 }
 
 .card-container {
@@ -107,4 +108,8 @@
   height: 60%;
   width: 32%;
   justify-content: space-between;
+}
+
+.card {
+  margin-right: 10px;
 }
