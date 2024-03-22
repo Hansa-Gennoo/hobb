@@ -1,34 +1,42 @@
-<div class="back-btn">
-  <%= link_to "Back to Hobbies", hobbies_path(@hobbies), class: "btn btn-dark btn-sm mb-4" %>
-</div>
+<div class="container">
 
-<h1><%= @hobby.name %></h1>
+  <div class="back-btn mt-4">
+    <%= link_to "Back to Hobbies", hobbies_path(@hobbies), class: "btn rounded-pill me-2 btn-outline-dark btn-sm mb-4" %>
+  </div>
 
-<div class="events-opt mb-4">
-<%# <%= link_to "See all events", hobby_events_path(@hobby, @events), class: "btn btn-light mt-4" %>
-  <%= link_to "Add an event", new_hobby_event_path(@hobby, @event), class: "btn btn-light btn-sm mt-4" %>
-</div>
+  <h1><%= @hobby.name %></h1>
+
+  <div class="btn-container">
+
+    <div class="events-opt">
+      <%# <%= link_to "See all events", hobby_events_path(@hobby, @events), class: "btn btn-light mt-4" %>
+      <%= link_to "Add an event", new_hobby_event_path(@hobby, @event), class: "btn rounded-pill me-2 btn-outline-dark btn-sm mt-4" %>
+    </div>
 
 
-<div class="chat-btn">
-  <%= link_to "Join Chatroom", hobby_chatroom_path(@hobby, @hobby.chatroom), class: "btn btn-dark btn-sm mb-4" %>
-</div>
+    <div class="chat-btn">
+      <%= link_to "Join Chatroom", hobby_chatroom_path(@hobby, @hobby.chatroom), class: "btn rounded-pill me-2 btn-dark btn-sm mb-4" %>
+    </div>
+  </div>
 
-<div class="event-list">
-  <ul>
-    <% @events.each do |event| %>
-      <h1 class="title mt-3"><%= event.hobby.name %></h1>
-      <li><%= event.name %></li>
-      <li><%= event.date.strftime("%A, %B %d") %></li>
+  <div class="cards-container">
+    <div class="event-list">
 
-      <div class="event-btn">
-        <%= link_to "See Details", hobby_event_path(event.hobby_id,event), class: "btn btn-dark btn-sm mb-4" %>
+      <% @events.each do |event| %>
+        <h5 class="title mt-3"><%= event.name %></h5>
+        <p><%= event.date.strftime("%A, %B %d") %></p>
 
-        
-        <%= link_to "Edit", edit_hobby_event_path(event.hobby_id, event), class: "btn btn-dark btn-sm mb-4" %>
+        <div class="event-btn">
+          <%= link_to "Show More", hobby_event_path(event.hobby_id,event), class: "btn rounded-pill btn-dark btn-sm mb-4" %>
 
-        <%= link_to "Delete", hobby_event_path(event.hobby_id, event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
-      </div>
-    <% end %>
-  </ul>
+
+          <%# <%= link_to "Edit", edit_hobby_event_path(event.hobby_id, event), class: "btn rounded-pill btn-sm mb-4" %>
+
+          <%# <%= link_to "Delete", hobby_event_path(event.hobby_id, event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
+        </div>
+      <% end %>
+
+    </div>
+
+  </div>
 </div>
