@@ -18,16 +18,9 @@
             <p class="event-title"><%= @event.time.strftime("%I:%M %p") %></p>
           </div>
 
-          <%# <div class="container event-btn mb-4">
+          <div class="container event-btn mb-4">
             <%= link_to "Edit", edit_hobby_event_path(@event.hobby_id, @event), class: "btn btn-dark btn-sm rounded-pill mb-4" %>
-            <%# <%= link_to "Delete", hobby_event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline-danger rounded-pill btn-sm mb-4" %>
-          <%# </div> %>
-          <div class="btn-pos" style="display: flex; flex-direction: row; align-items: flex-end; justify-content: flex-end;">
-            <% if user_signed_in? && @event.user == current_user %>
-              <%= link_to "Edit", edit_hobby_event_path(event.hobby_id, event), class: "btn btn-dark btn-sm mb-4" %>
-
-              <%= link_to "Delete", hobby_event_path(event.hobby_id, event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
-            <% end %>
+            <%= link_to "Delete", hobby_event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline-danger rounded-pill btn-sm mb-4" %>
           </div>
 
           <div class="container join-btn mt-4">
