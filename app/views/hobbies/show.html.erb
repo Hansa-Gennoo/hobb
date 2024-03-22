@@ -6,7 +6,7 @@
 
 <div class="events-opt mb-4">
 <%# <%= link_to "See all events", hobby_events_path(@hobby, @events), class: "btn btn-light mt-4" %>
-<%= link_to "Add an event", new_hobby_event_path(@hobby, @event), class: "btn btn-light btn-sm mt-4" %>
+  <%= link_to "Add an event", new_hobby_event_path(@hobby, @event), class: "btn btn-light btn-sm mt-4" %>
 </div>
 
 
@@ -19,14 +19,19 @@
     <% @events.each do |event| %>
       <h1 class="title mt-3"><%= event.hobby.name %></h1>
       <li><%= event.name %></li>
-      <li><%= event.date %></li>
+      <li><%= event.date.strftime("%A, %B %d") %></li>
 
       <div class="event-btn">
-      <%= link_to "See Details", hobby_event_path(event.hobby_id,event), class: "btn btn-dark btn-sm mb-4" %>
+        <%= link_to "See Details", hobby_event_path(event.hobby_id,event), class: "btn btn-dark btn-sm mb-4" %>
 
-      <%= link_to "Edit", edit_hobby_event_path(event.hobby_id, event), class: "btn btn-dark btn-sm mb-4" %>
+        <div class="btn-pos" style="display: flex; flex-direction: row; align-items: flex-end; justify-content: flex-end;">
+          <% if user_signed_in? && event.user == current_user %>
+            <%= link_to "Edit", edit_hobby_event_path(event.hobby_id, event), class: "btn btn-dark btn-sm mb-4" %>
 
-      <%= link_to "Delete", hobby_event_path(event.hobby_id, event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
+            <%= link_to "Delete", hobby_event_path(event.hobby_id, event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm mb-4" %>
+          <% end %>
+        </div>
+
       </div>
     <% end %>
   </ul>
