@@ -1,18 +1,23 @@
 <%# <div class="back-btn"> %>
   <%# <%= link_to "Back to Events", hobby_event_bookings_path(@event, @bookings), class: "btn btn-dark btn-sm mb-4" %>
 <%# </div> %>
+<div class="container">
 
-<h1>Upcoming Events</h1>
+  <h1>Upcoming Events</h1>
 
-<div class="booking-list">
-  <div>
-    <% @bookings.each do |booking| %>
-      <div>
-        <p><strong>Hobby:</strong> <%= booking.event.hobby.name %></p>
-        <p><strong>Event:</strong> <%= booking.event.name %> - <%= booking.event.time.strftime("%I:%M %p") %></p>
-        <p><%= link_to "See more", hobby_event_path(booking.event.hobby, booking.event) %></p>
-        <%= button_to "Remove", hobby_event_booking_path(booking.event.hobby, booking.event, booking), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
-      </div>
-    <% end %>
+  <div class="booking-list mt-4">
+    <div>
+      <% @bookings.each do |booking| %>
+        <div class="mt-4 border-bottom border-dark" style="width: 400px;">
+          <p><strong>Hobby:</strong> <%= booking.event.hobby.name %></p>
+          <p><strong>Event:</strong> <%= booking.event.name %> - <%= booking.event.date.strftime("%A, %B %d") %></p>
+          <div class="d-flex mb-4">
+            <%= link_to "See more", hobby_event_path(booking.event.hobby, booking.event), class: "btn rounded-pill me-2 btn-info btn-sm" %>
+            <%= button_to "Remove", hobby_event_booking_path(booking.event.hobby, booking.event, booking), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn rounded-pill btn-dark btn-sm" %>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
