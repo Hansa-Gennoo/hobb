@@ -14,8 +14,8 @@
           <div class="container card-detail mt-4">
             <h1 class="event-title"><%= @event.name %></h1>
             <p class="event-title"><%= @event.location %></p>
-            <p class="event-title"><%= @event.date %></p>
-            <p class="event-title"><%= @event.time %></p>
+            <p class="event-title"><%= @event.date.strftime("%A, %B %d") %></p>
+            <p class="event-title"><%= @event.time.strftime("%I:%M %p") %></p>
           </div>
 
           <div class="container event-btn mb-4">
