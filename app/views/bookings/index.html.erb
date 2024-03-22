@@ -7,12 +7,14 @@
 <div class="booking-list">
   <div>
     <% @bookings.each do |booking| %>
-      <div>
-        <p><strong>Hobby:</strong> <%= booking.event.hobby.name %></p>
-        <p><strong>Event:</strong> <%= booking.event.name %> - <%= booking.event.time.strftime("%I:%M %p") %></p>
-        <p><%= link_to "See more", hobby_event_path(booking.event.hobby, booking.event) %></p>
-        <%= button_to "Remove", hobby_event_booking_path(booking.event.hobby, booking.event, booking), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
-      </div>
+      <% if user_signed_in? && booking.user == current_user %>
+        <div>
+          <p><strong>Hobby:</strong> <%= booking.event.hobby.name %></p>
+          <p><strong>Event:</strong> <%= booking.event.name %> - <%= booking.event.time.strftime("%I:%M %p") %></p>
+          <p><%= link_to "See more", hobby_event_path(booking.event.hobby, booking.event) %></p>
+          <%= button_to "Remove", hobby_event_booking_path(booking.event.hobby, booking.event, booking), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
