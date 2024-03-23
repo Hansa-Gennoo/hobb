@@ -13,13 +13,14 @@
     <% @hobbies.each do |hobby| %>
 
       <div class="card-category">
-        <%= hobby.name %>
+        <div class="cad-title-name">
+          <%= hobby.name %>
+        </div>
+
         <div class="btns">
-
           <%= link_to "Join", hobby_path(hobby), class: "btn rounded-pill me-2 btn-outline-dark btn-sm mb-4" %>
-
           <% if current_user.admin? %>
-            <%= link_to "Delete", hobby_path(hobby), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn rounded-pill me-2 btn-dark btn-sm mb-4" %>
+            <%= link_to "Delete", hobby_path(hobby), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn rounded-pill me-2 btn-danger btn-sm mb-4" %>
           <% end %>
         </div>
 
