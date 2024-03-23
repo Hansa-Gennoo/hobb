@@ -1,11 +1,14 @@
-<div class="container back-btn mt-2">
+
+<div class="container chatroom-bg">
+
+<div class="back-btn mt-2">
   <%= link_to "Back to hobby", hobby_path(params[:hobby_id]), class: "btn btn-outline-dark rounded-pill btn-sm mb-4" %>
 </div>
 
 
 <div class="container chatroom" data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">#<%= @chatroom.name %></h1>
+  <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><%= @chatroom.name %></h1>
 
   <div class="container messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
@@ -25,4 +28,5 @@
       </div>
     <% end %>
   </div>
+</div>
 </div>
